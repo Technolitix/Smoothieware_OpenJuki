@@ -20,6 +20,7 @@
 #include "modules/tools/drillingcycles/Drillingcycles.h"
 #include "FilamentDetector.h"
 #include "MotorDriverControl.h"
+#include "modules/tools/vacuumsensor/VacuumSensor.h"
 
 #include "modules/robot/Conveyor.h"
 #include "modules/utils/simpleshell/SimpleShell.h"
@@ -188,6 +189,9 @@ void init() {
     #endif
     #ifndef NO_UTILS_MOTORDRIVERCONTROL
     kernel->add_module( new MotorDriverControl(0) );
+    #endif
+    #ifndef NO_TOOLS_VACUUMSENSOR
+    kernel->add_module( new VacuumSensor() );
     #endif
     // Create and initialize USB stuff
     u.init();
